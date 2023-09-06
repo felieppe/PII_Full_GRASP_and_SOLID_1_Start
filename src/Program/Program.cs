@@ -28,6 +28,24 @@ namespace Full_GRASP_And_SOLID
             recipe.PrintRecipe();
         }
 
+        private static double GetProductionCost(Recipe recipe) {
+            double suppliesCost = 0.0;
+            double equipmentCost = 0.0;
+
+            // Supplies calculation
+            ArrayList recipeSteps = recipe.GetSteps();
+            foreach (Step step in recipeSteps) {
+                suppliesCost += (step.Quantity) * GetProduct(step.Input.Description).UnitCost;
+            }
+
+            // Equipment calculation
+            foreach (Step step in recipeSteps) {
+                equipmentCost += (step.Time) * GetEquipment(step.Equipment.Description).HourlyCost;
+            }
+
+            return suppliesCost + equipmentCost;
+        }
+
         private static void PopulateCatalogs()
         {
             AddProductToCatalog("Café", 100);
