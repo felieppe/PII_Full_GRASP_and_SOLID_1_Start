@@ -29,6 +29,10 @@ namespace Full_GRASP_And_SOLID.Library
             this.steps.Remove(step);
         }
 
+        public void SetProductionCost(double pc) {
+            this.ProductionCost = pc;
+        }
+
         public void PrintRecipe()
         {
             Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
